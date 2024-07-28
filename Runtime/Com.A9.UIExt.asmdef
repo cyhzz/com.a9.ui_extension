@@ -1,0 +1,17 @@
+{
+    "name": "Com.A9.UIExt",
+    "rootNamespace": "",
+    "references": [
+        "GUID:8a65b104d2cf848c7a5178a1fe80efc4",
+        "GUID:9a6f5f39d82304d29ad3d29b5f5d1a69"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

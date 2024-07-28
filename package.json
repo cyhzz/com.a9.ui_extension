@@ -1,0 +1,17 @@
+{
+  "name": "com.a9.ui_extension",
+  "version": "1.0.1",
+  "description": "UIExtension",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/cyhzz/com.a9.ui_extension.git"
+  },
+  "author": "A9019",
+  "keywords": [
+    "git",
+    "editor"
+  ],
+  "displayName": "UIExtension",
+  "unity": "2020.3"
+}
