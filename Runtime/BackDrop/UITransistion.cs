@@ -83,36 +83,54 @@ namespace Com.A9.UIExt
         {
             entries.Add(BlackEvent_(col, act, entry_time, time, exit_time, end));
 
-            this.text.text = txt;
+            if (this.text != null)
+                this.text.text = txt;
 
-            if (string.IsNullOrEmpty(txt))
-                text_bundle.SetActive(false);
-            else
-                text_bundle.SetActive(true);
+            if (text_bundle != null)
+            {
+                if (string.IsNullOrEmpty(txt))
+                    text_bundle.SetActive(false);
+                else
+                    text_bundle.SetActive(true);
+            }
 
-            this.title.text = title;
-            if (string.IsNullOrEmpty(title))
-                title_bundle.SetActive(false);
-            else
-                title_bundle.SetActive(true);
+            if (this.title != null)
+                this.title.text = title;
+
+            if (title_bundle != null)
+            {
+                if (string.IsNullOrEmpty(title))
+                    title_bundle.SetActive(false);
+                else
+                    title_bundle.SetActive(true);
+            }
         }
 
         public void BlackEventFirstHalf(Color col, Action act = null, float entry_time = 0.35f, string title = "", string txt = "")
         {
             entries.Add(BlackIn_(col, act, entry_time));
 
-            this.text.text = txt;
+            if (this.text != null)
+                this.text.text = txt;
 
-            if (string.IsNullOrEmpty(txt))
-                text_bundle.SetActive(false);
-            else
-                text_bundle.SetActive(true);
+            if (text_bundle != null)
+            {
+                if (string.IsNullOrEmpty(txt))
+                    text_bundle.SetActive(false);
+                else
+                    text_bundle.SetActive(true);
+            }
 
-            this.title.text = title;
-            if (string.IsNullOrEmpty(title))
-                title_bundle.SetActive(false);
-            else
-                title_bundle.SetActive(true);
+            if (this.title != null)
+                this.title.text = title;
+
+            if (title_bundle != null)
+            {
+                if (string.IsNullOrEmpty(title))
+                    title_bundle.SetActive(false);
+                else
+                    title_bundle.SetActive(true);
+            }
         }
 
         public void BlackEventSecondHalf(float exit_time = 0.3f, Action OnEnd = null)
