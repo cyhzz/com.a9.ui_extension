@@ -94,7 +94,7 @@ namespace Com.A9.UIExt
         {
             _target = (InfiniteScroll)target;
             _object = new SerializedObject(target);
-            _prefab = _object.FindProperty("PrefabName");
+            _prefab = _object.FindProperty("prefab");
             _topPadding = _object.FindProperty("TopPadding");
             _bottomPadding = _object.FindProperty("BottomPadding");
             _itemSpacing = _object.FindProperty("ItemSpacing");
