@@ -97,6 +97,7 @@ namespace Com.A9.UIExt
             for (float i = 0; i < duration; i += Time.deltaTime)
             {
                 target.position = Vector3.Lerp(from, to, CurveManager.instance.Evaluate(curve, i / duration));
+                Debug.Log(target.position);
                 yield return null;
             }
             target.position = to;
