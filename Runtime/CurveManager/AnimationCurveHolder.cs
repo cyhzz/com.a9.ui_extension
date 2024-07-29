@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 namespace Com.A9.UIExt
 {
+    [System.Serializable]
     public class AnimationCurveHolder
     {
         public string id;
