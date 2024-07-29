@@ -114,5 +114,39 @@ namespace Com.A9.UIExt
             yield return new WaitForSecondsRealtime(time);
             OnEnd?.Invoke();
         }
+
+        public static IEnumerator Scale_(Transform t, AnimationCurve cx, AnimationCurve cy, float duration)
+        {
+            var start = t.transform.localScale;
+            float pg = 0;
+            while (pg < 1)
+            {
+                Vector3 target = new Vector3(
+                cx.Evaluate(pg),
+                cy.Evaluate(pg)
+                 , 1);
+                t.transform.localScale = new Vector3(target.x * start.x, target.y * start.y, start.z);
+                pg += Time.deltaTime / duration;
+                yield return null;
+            }
+            t.transform.localScale = start;
+        }
+
+        public static IEnumerator Scale_(Transform t, CurveType cx, CurveType cy, float duration)
+        {
+            var start = t.transform.localScale;
+            float pg = 0;
+            while (pg < 1)
+            {
+                Vector3 target = new Vector3(
+                CurveManager.instance.Evaluate(cx, pg),
+                CurveManager.instance.Evaluate(cy, pg)
+                 , 1);
+                t.transform.localScale = new Vector3(target.x * start.x, target.y * start.y, start.z);
+                pg += Time.deltaTime / duration;
+                yield return null;
+            }
+            t.transform.localScale = start;
+        }
     }
 }

@@ -46,9 +46,6 @@ namespace Com.A9.UIExt
         EASE_IN_OUT_BACK,
         EASE_IN_OUT_ELASTIC,
         EASE_IN_OUT_BOUNCE,
-
-        ANIM_DOWN_UP,
-        ANIM_UP_DOWN,
     }
 
     public class CurveManager : Singleton<CurveManager>
@@ -66,7 +63,11 @@ namespace Com.A9.UIExt
         protected override void Awake()
         {
             base.Awake();
-            anim_curve = GetComponentsInChildren<AnimationCurveHolder>().ToList();
+        }
+
+        public float Evaluate(string id, float fg)
+        {
+            return anim_curve.Find(c => c.id == id).Evaluate(fg);
         }
 
         public float Evaluate(CurveType type, float fg)
@@ -105,7 +106,7 @@ namespace Com.A9.UIExt
             else if (type == CurveType.EASE_IN_OUT_ELASTIC) return EaseInOutElastic(fg);
             else if (type == CurveType.EASE_IN_OUT_BOUNCE) return EaseInOutBounce(fg);
 
-            return anim_curve.Find(c => c.curve_type == type).Evaluate(fg);
+            return 0;
         }
 
         float EaseInSine(float fg) => 1 - Mathf.Cos((fg * Mathf.PI) / 2);
