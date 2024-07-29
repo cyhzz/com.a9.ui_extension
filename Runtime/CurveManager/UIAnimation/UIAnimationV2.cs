@@ -132,19 +132,29 @@ namespace Com.A9.UIExt
             t.transform.localScale = start;
         }
 
+        public static float speed = 1.0f;
+
         public static IEnumerator Scale_(Transform t, CurveType cx, CurveType cy, float duration)
         {
             var start = t.transform.localScale;
             float pg = 0;
             while (pg < 1)
             {
+                if (t == null)
+                {
+                    yield break;
+                }
                 Vector3 target = new Vector3(
                 CurveManager.instance.Evaluate(cx, pg),
                 CurveManager.instance.Evaluate(cy, pg)
                  , 1);
                 t.transform.localScale = new Vector3(target.x * start.x, target.y * start.y, start.z);
-                pg += Time.deltaTime / duration;
+                pg += Time.deltaTime / duration * speed;
                 yield return null;
+            }
+            if (t == null)
+            {
+                yield break;
             }
             t.transform.localScale = start;
         }
