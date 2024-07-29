@@ -51,6 +51,10 @@ namespace Com.A9.UIExt
     public class CurveManager : Singleton<CurveManager>
     {
         public List<AnimationCurveHolder> anim_curve;
+        public AnimationCurve GetAnimCurve(string id)
+        {
+            return anim_curve.Find(c => c.id == id).curve;
+        }
 
         const float c1 = 1.70158f;
         const float c2 = c1 * 1.525f;
