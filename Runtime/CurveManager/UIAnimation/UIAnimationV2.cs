@@ -158,5 +158,18 @@ namespace Com.A9.UIExt
             }
             t.transform.localScale = start;
         }
+
+        public static IEnumerator ShaderFloat_(Renderer rd, string key, float duration, MaterialPropertyBlock blk, AnimationCurve cv)
+        {
+            for (float i = 0; i < duration; i += Time.deltaTime)
+            {
+                blk.SetFloat(key, cv.Evaluate(i / duration));
+                rd.SetPropertyBlock(blk);
+                yield return null;
+            }
+
+            blk.SetFloat(key, cv.Evaluate(1.0f));
+            rd.SetPropertyBlock(blk);
+        }
     }
 }
