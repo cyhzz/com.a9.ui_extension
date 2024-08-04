@@ -175,9 +175,10 @@ namespace Com.A9.UIExt
         public static IEnumerator ShaderColor_(Renderer rd, string key, float duration, MaterialPropertyBlock blk, AnimationCurve cv_r,
         AnimationCurve cv_g, AnimationCurve cv_b, AnimationCurve cv_a)
         {
-            rd.GetPropertyBlock(blk);
             for (float i = 0; i < duration; i += Time.deltaTime)
             {
+                rd.GetPropertyBlock(blk);
+
                 blk.SetColor(key,
                 new Color(
                     cv_r.Evaluate(i / duration),
@@ -189,6 +190,7 @@ namespace Com.A9.UIExt
                 yield return null;
             }
 
+            rd.GetPropertyBlock(blk);
             blk.SetColor(key, new Color(
                     cv_r.Evaluate(1.0f),
                     cv_g.Evaluate(1.0f),
