@@ -171,5 +171,30 @@ namespace Com.A9.UIExt
             blk.SetFloat(key, cv.Evaluate(1.0f));
             rd.SetPropertyBlock(blk);
         }
+
+        public static IEnumerator ShaderColor_(Renderer rd, string key, float duration, MaterialPropertyBlock blk, AnimationCurve cv_r,
+        AnimationCurve cv_g, AnimationCurve cv_b, AnimationCurve cv_a)
+        {
+            for (float i = 0; i < duration; i += Time.deltaTime)
+            {
+                blk.SetColor(key,
+                new Color(
+                    cv_r.Evaluate(i / duration),
+                    cv_g.Evaluate(i / duration),
+                    cv_b.Evaluate(i / duration),
+                    cv_a.Evaluate(i / duration)
+                ));
+                rd.SetPropertyBlock(blk);
+                yield return null;
+            }
+
+            blk.SetColor(key, new Color(
+                    cv_r.Evaluate(1.0f),
+                    cv_g.Evaluate(1.0f),
+                    cv_b.Evaluate(1.0f),
+                    cv_a.Evaluate(1.0f)
+                ));
+            rd.SetPropertyBlock(blk);
+        }
     }
 }
