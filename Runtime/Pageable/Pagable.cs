@@ -71,6 +71,6 @@ public class Pageable : MonoBehaviour
     void RefreshButtonState()
     {
         up.interactable = current_page > 0;
-        down.interactable = current_page < max_page;
+        down.interactable = current_page < max_page - 1;
     }
 }
