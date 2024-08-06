@@ -22,6 +22,14 @@ public class Pageable : MonoBehaviour
         set
         {
             current_page = value;
+            if (current_page < 0)
+            {
+                current_page = 0;
+            }
+            if (current_page > max_page)
+            {
+                current_page = max_page;
+            }
             OnPageChanged?.Invoke();
         }
     }
