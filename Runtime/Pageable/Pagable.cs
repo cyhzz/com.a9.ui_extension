@@ -28,6 +28,13 @@ public class Pageable : MonoBehaviour
 
     public UnityEvent OnPageChanged;
 
+    void Awake()
+    {
+        up.onClick.AddListener(PageUp);
+        down.onClick.AddListener(PageDown);
+        RefreshButtonState();
+    }
+
     public void PageUp()
     {
         CurrentPage--;
