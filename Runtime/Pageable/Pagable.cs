@@ -13,6 +13,19 @@ public class Pageable : MonoBehaviour
 
     public int current_page;
     public int max_page;
+    public int MaxPage
+    {
+        get
+        {
+            return max_page;
+        }
+        set
+        {
+            max_page = value;
+            RefreshButtonState();
+        }
+    }
+
     public int CurrentPage
     {
         get
@@ -58,6 +71,6 @@ public class Pageable : MonoBehaviour
     void RefreshButtonState()
     {
         up.interactable = current_page > 0;
-        down.interactable = max_page > current_page;
+        down.interactable = current_page < max_page;
     }
 }
