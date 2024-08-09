@@ -14,5 +14,14 @@ namespace Com.A9.UIExt
             }
             CoroutineManager.instance.StartCoroutineInterrupt(m, sc);
         }
+        public static void StartCoroutineNoInterrupt(this MonoBehaviour m, IEnumerator sc)
+        {
+            if (!CoroutineManager.instance)
+            {
+                Debug.Log("there is no coroutine coordinator , start coroutine failed");
+                return;
+            }
+            CoroutineManager.instance.StartCoroutineNoInterrupt(m, sc);
+        }
     }
 }
