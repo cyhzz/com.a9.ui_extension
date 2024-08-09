@@ -163,6 +163,10 @@ namespace Com.A9.UIExt
         {
             for (float i = 0; i < duration; i += Time.deltaTime)
             {
+                if (rd == null)
+                {
+                    yield break;
+                }
                 blk.SetFloat(key, cv.Evaluate(i / duration));
                 rd.SetPropertyBlock(blk);
                 yield return null;
@@ -177,6 +181,10 @@ namespace Com.A9.UIExt
         {
             for (float i = 0; i < duration; i += Time.deltaTime)
             {
+                if (rd == null)
+                {
+                    yield break;
+                }
                 rd.GetPropertyBlock(blk);
 
                 blk.SetColor(key,
