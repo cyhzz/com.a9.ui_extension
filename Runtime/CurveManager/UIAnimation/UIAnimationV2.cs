@@ -131,6 +131,21 @@ namespace Com.A9.UIExt
             }
             t.transform.localScale = start;
         }
+        public static IEnumerator Scale_(Transform t, Vector3 start, AnimationCurve cx, AnimationCurve cy, float duration)
+        {
+            float pg = 0;
+            while (pg < 1)
+            {
+                Vector3 target = new Vector3(
+                cx.Evaluate(pg),
+                cy.Evaluate(pg)
+                 , 1);
+                t.transform.localScale = new Vector3(target.x * start.x, target.y * start.y, start.z);
+                pg += Time.deltaTime / duration;
+                yield return null;
+            }
+            t.transform.localScale = start;
+        }
 
         public static float speed = 1.0f;
 
