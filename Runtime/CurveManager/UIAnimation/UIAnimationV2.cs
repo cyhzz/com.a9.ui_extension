@@ -159,6 +159,30 @@ namespace Com.A9.UIExt
             t.transform.localScale = start;
         }
 
+        public static IEnumerator Scale_(Transform t, Vector3 start, CurveType cx, CurveType cy, float duration)
+        {
+            float pg = 0;
+            while (pg < 1)
+            {
+                if (t == null)
+                {
+                    yield break;
+                }
+                Vector3 target = new Vector3(
+                CurveManager.instance.Evaluate(cx, pg),
+                CurveManager.instance.Evaluate(cy, pg)
+                 , 1);
+                t.transform.localScale = new Vector3(target.x * start.x, target.y * start.y, start.z);
+                pg += Time.deltaTime / duration * speed;
+                yield return null;
+            }
+            if (t == null)
+            {
+                yield break;
+            }
+            t.transform.localScale = start;
+        }
+
         public static IEnumerator Scale_(Transform t, CurveType type, Vector3 from, Vector3 to, float duration)
         {
             float pg = 0;
