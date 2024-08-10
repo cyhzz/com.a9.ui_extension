@@ -159,6 +159,20 @@ namespace Com.A9.UIExt
             t.transform.localScale = start;
         }
 
+        public static IEnumerator Scale_(Transform t, CurveType type, Vector3 from, Vector3 to, float duration)
+        {
+            float pg = 0;
+            while (pg < 1)
+            {
+                Vector3 target = Vector3.LerpUnclamped(from, to, CurveManager.instance.Evaluate(type, pg));
+
+                t.localScale = new Vector3(target.x, target.y, 1);
+                pg += Time.unscaledDeltaTime / duration;
+                yield return null;
+            }
+            t.localScale = new Vector3(to.x, to.y, 1);
+        }
+
         public static IEnumerator ShaderFloat_(Renderer rd, string key, float duration, MaterialPropertyBlock blk, AnimationCurve cv)
         {
             for (float i = 0; i < duration; i += Time.deltaTime)
