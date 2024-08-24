@@ -131,6 +131,7 @@ namespace Com.A9.UIExt
             }
             t.transform.localScale = start;
         }
+
         public static IEnumerator Scale_(Transform t, Vector3 start, AnimationCurve cx, AnimationCurve cy, float duration)
         {
             float pg = 0;
@@ -203,6 +204,10 @@ namespace Com.A9.UIExt
             float pg = 0;
             while (pg < 1)
             {
+                if (t == null)
+                {
+                    yield break;
+                }
                 Vector3 target = Vector3.LerpUnclamped(from, to, CurveManager.instance.Evaluate(type, pg));
 
                 t.localScale = new Vector3(target.x, target.y, 1);
