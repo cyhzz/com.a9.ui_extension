@@ -12,10 +12,6 @@ namespace Com.A9.UIExt
         public CanvasGroup backdrop;
         public List<IEnumerator> entries = new List<IEnumerator>();
         Coroutine C;
-        public Text text;
-        public Text title;
-        public GameObject text_bundle;
-        public GameObject title_bundle;
 
         IEnumerator Go_(float time = 0.3f)
         {
@@ -78,59 +74,14 @@ namespace Com.A9.UIExt
             }
         }
 
-        public void BlackEvent(Color col, Action act = null, float entry_time = 0.35f, float time = 1f, float exit_time = 0.3f, Action end = null, string title = "",
-        string txt = "")
+        public void BlackEvent(Color col, Action act = null, float entry_time = 0.35f, float time = 1f, float exit_time = 0.3f, Action end = null)
         {
             entries.Add(BlackEvent_(col, act, entry_time, time, exit_time, end));
-
-            if (this.text != null)
-                this.text.text = txt;
-
-            if (text_bundle != null)
-            {
-                if (string.IsNullOrEmpty(txt))
-                    text_bundle.SetActive(false);
-                else
-                    text_bundle.SetActive(true);
-            }
-
-            if (this.title != null)
-                this.title.text = title;
-
-            if (title_bundle != null)
-            {
-                if (string.IsNullOrEmpty(title))
-                    title_bundle.SetActive(false);
-                else
-                    title_bundle.SetActive(true);
-            }
         }
 
-        public void BlackEventFirstHalf(Color col, Action act = null, float entry_time = 0.35f, string title = "", string txt = "")
+        public void BlackEventFirstHalf(Color col, Action act = null, float entry_time = 0.35f)
         {
             entries.Add(BlackIn_(col, act, entry_time));
-
-            if (this.text != null)
-                this.text.text = txt;
-
-            if (text_bundle != null)
-            {
-                if (string.IsNullOrEmpty(txt))
-                    text_bundle.SetActive(false);
-                else
-                    text_bundle.SetActive(true);
-            }
-
-            if (this.title != null)
-                this.title.text = title;
-
-            if (title_bundle != null)
-            {
-                if (string.IsNullOrEmpty(title))
-                    title_bundle.SetActive(false);
-                else
-                    title_bundle.SetActive(true);
-            }
         }
 
         public void BlackEventSecondHalf(float exit_time = 0.3f, Action OnEnd = null)
