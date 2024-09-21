@@ -175,7 +175,7 @@ namespace Com.A9.UIExt
             t.transform.localScale = start;
         }
 
-        public IEnumerator SpriteAlpha_(SpriteRenderer rd, CurveType type, float from, float to, float duration)
+        public static IEnumerator SpriteAlpha_(SpriteRenderer rd, CurveType type, float from, float to, float duration)
         {
             float pg = 0;
             Color start = rd.color;
