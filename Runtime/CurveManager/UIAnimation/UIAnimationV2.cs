@@ -175,6 +175,28 @@ namespace Com.A9.UIExt
             t.transform.localScale = start;
         }
 
+        IEnumerator SpriteAlpha_(SpriteRenderer rd, CurveType type, float from, float to, float duration)
+        {
+            float pg = 0;
+            Color start = rd.color;
+            while (pg < 1)
+            {
+                if (rd == null)
+                {
+                    yield break;
+                }
+                float target = Mathf.LerpUnclamped(from, to, CurveManager.instance.Evaluate(type, pg));
+                rd.color = new Color(start.r, start.g, start.b, target);
+                pg += Time.unscaledDeltaTime / duration;
+                yield return null;
+            }
+            if (rd == null)
+            {
+                yield break;
+            }
+            rd.color = new Color(start.r, start.g, start.b, to);
+        }
+
         public static IEnumerator Scale_(Transform t, Vector3 start, CurveType cx, CurveType cy, float duration)
         {
             float pg = 0;
