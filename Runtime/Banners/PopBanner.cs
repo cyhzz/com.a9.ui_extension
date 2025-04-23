@@ -12,30 +12,46 @@ namespace Com.A9.UIExt
         public void Show(string text)
         {
             GameObject generatedPrefab = Instantiate(prefab, grid);
-            Text textMeshPro = generatedPrefab.GetComponentInChildren<Text>();
+            Text txt = generatedPrefab.GetComponentInChildren<Text>();
 
-            if (textMeshPro != null)
+            if (txt != null)
             {
-                textMeshPro.text = text;
+                txt.text = text;
             }
             else
             {
-                Debug.LogError("TextMeshPro component not found on prefab!");
+                TMP_Text textMeshPro = generatedPrefab.GetComponentInChildren<TMP_Text>();
+                if (textMeshPro != null)
+                {
+                    textMeshPro.text = text;
+                }
+                else
+                {
+                    Debug.LogError("Text or TextMeshPro component not found on prefab!");
+                }
             }
         }
 
         public void Text(GameObject prefab, string text, Vector2 pos)
         {
             GameObject generatedPrefab = Instantiate(prefab, pos, Quaternion.identity, grid);
-            TMP_Text textMeshPro = generatedPrefab.GetComponentInChildren<TMP_Text>();
+            Text txt = generatedPrefab.GetComponentInChildren<Text>();
 
-            if (textMeshPro != null)
+            if (txt != null)
             {
-                textMeshPro.text = text;
+                txt.text = text;
             }
             else
             {
-                Debug.LogError("TextMeshPro component not found on prefab!");
+                TMP_Text textMeshPro = generatedPrefab.GetComponentInChildren<TMP_Text>();
+                if (textMeshPro != null)
+                {
+                    textMeshPro.text = text;
+                }
+                else
+                {
+                    Debug.LogError("Text or TextMeshPro component not found on prefab!");
+                }
             }
         }
     }
