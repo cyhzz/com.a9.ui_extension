@@ -15,6 +15,7 @@ namespace Com.A9.UIExt
         public UnityEvent OnUp;
         public UnityEvent OnHover;
         public UnityEvent OnPressed;
+        public UnityEvent OnDown;
 
         public float pressed_wait = 0.5f;
         public float pressed_gap = 0.02f;
@@ -81,6 +82,7 @@ namespace Com.A9.UIExt
         public void OnPointerDown(PointerEventData eventData)
         {
             is_down = true;
+            OnDown?.Invoke();
         }
     }
 }
