@@ -32,12 +32,12 @@ namespace Com.A9.UIExt
             }
         }
 
-        public void Text(GameObject prefab, string text)
+        public GameObject Text(GameObject prefab, string text)
         {
-            Text(prefab, text, grid.position);
+            return Text(prefab, text, grid.position);
         }
 
-        public void Text(GameObject prefab, string text, Vector2 pos)
+        public GameObject Text(GameObject prefab, string text, Vector2 pos)
         {
             GameObject generatedPrefab = Instantiate(prefab, pos, Quaternion.identity, grid);
             Text txt = generatedPrefab.GetComponentInChildren<Text>();
@@ -58,6 +58,7 @@ namespace Com.A9.UIExt
                     Debug.LogError("Text or TextMeshPro component not found on prefab!");
                 }
             }
+            return generatedPrefab;
         }
     }
 }
