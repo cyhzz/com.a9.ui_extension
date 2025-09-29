@@ -32,6 +32,11 @@ namespace Com.A9.UIExt
             }
         }
 
+        public void Text(GameObject prefab, string text)
+        {
+            Text(prefab, text, grid.position);
+        }
+
         public void Text(GameObject prefab, string text, Vector2 pos)
         {
             GameObject generatedPrefab = Instantiate(prefab, pos, Quaternion.identity, grid);
